@@ -8,6 +8,7 @@ main:
 	
 	mov rdi, string
 	mov esi, [age]
+	xor eax, eax    ; 0 xmm registers used.
 	call printf
 
 	leave           ; Equivalent to: mov rsp, rbp; pop rbp
