@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\e[0;34mCreating simple starting ARM program.\e[0m\n"
+echo -e "\e[0;34mCreating simple starting x86-64 program.\e[0m\n"
 sleep 1
 cp ../scripts/simple.asm ./
 mv simple.asm $1
