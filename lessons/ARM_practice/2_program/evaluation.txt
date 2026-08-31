@@ -25,15 +25,9 @@ TO FIX
      Change to:  .word 1, 0
      (__kernel_timespec is the 64-bit-time struct - not this syscall)
 
-  3. Add .balign 4 before the .word directive.
-     Same reason as in program 1. Harmless here, habit worth keeping.
-
 STYLE
-  4. swi -> svc          old mnemonic vs current name, same opcode
-  5. #0xa2 -> #162       decimal matches the tables you look it up in
-  6. // -> @             ARM comment convention
-  7. Blank line between the nanosleep block and the exit block -
-     two separate operations, let them read as two
+  3. #0xa2 -> #162       decimal matches the tables you look it up in
+  4. // -> @             ARM comment convention
 
 TAKEAWAY
   Syscall number from a table. Struct layout from man 2.
@@ -42,5 +36,7 @@ TAKEAWAY
   would not have.
 
 NEXT
-  Add a write before and after the sleep so the delay is visible.
-  Then the countdown.
+  Add a write before and after the sleep so the delay is visible. Then the countdown.
+
+- Review by Claude Opus 5.
+

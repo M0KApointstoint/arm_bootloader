@@ -1,0 +1,19 @@
+Structurally this is right. Two functions' worth of separation,
+blank lines grouping operations, a real parameterized print with
+an interface. That's a big step up from the first program.
+
+The r4/r5 detour is unnecessary. You save r0 and r1 into r4/r5,
+then immediately copy them back into r1/r2. The values never
+needed protecting — nothing happens between the save and the restore.
+You can shuffle directly.
+Order matters: move r1 into r2 before overwriting r1. Get it backwards
+and you copy the buffer pointer into both. That's the entire trick, and it's
+the same problem as swapping two variables without a temp.
+With the push gone, print is now a leaf function that touches no callee-saved
+registers — nothing to preserve at all.
+
+Also rename fmt to buf or msg — fmt means format string, and there's
+noformatting here.
+
+- Review by Claude Opus 5.
+
