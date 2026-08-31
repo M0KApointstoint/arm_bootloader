@@ -1,0 +1,46 @@
+EVALUATION - sleep.s
+====================
+
+WHAT IT DOES
+  Calls nanosleep(162) for 1 second, then exits cleanly via exit(1).
+  Runs correctly. Verify with: time ./sleep
+
+CORRECT
+  - Syscall number in r7, args in r0/r1 - right convention
+  - ldr r0, =struct_var  - correct way to get an address
+  - Exit path present, no fall-through past the end
+  - .data used rather than .rodata - right call, the kernel may
+    write to the rem struct
+  - Comment documents where the struct definition came from -
+    good habit, keep doing this
+
+TO FIX
+  1. r1 must be 0, not a pointer to your own struct.
+     r1 is the "remaining time" output. The kernel writes there
+     if a signal interrupts the sleep, which would corrupt your
+     input. Change to:  mov r1, #0
+
+  2. Struct is 2 words, not 4.
+     32-bit ARM uses struct timespec: tv_sec, tv_nsec, both 4 bytes.
+     Change to:  .word 1, 0
+     (__kernel_timespec is the 64-bit-time struct - not this syscall)
+
+  3. Add .balign 4 before the .word directive.
+     Same reason as in program 1. Harmless here, habit worth keeping.
+
+STYLE
+  4. swi -> svc          old mnemonic vs current name, same opcode
+  5. #0xa2 -> #162       decimal matches the tables you look it up in
+  6. // -> @             ARM comment convention
+  7. Blank line between the nanosleep block and the exit block -
+     two separate operations, let them read as two
+
+TAKEAWAY
+  Syscall number from a table. Struct layout from man 2.
+  The program worked despite the wrong struct only because
+  1 second encodes identically in both layouts. At 500ms it
+  would not have.
+
+NEXT
+  Add a write before and after the sleep so the delay is visible.
+  Then the countdown.
