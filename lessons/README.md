@@ -1,4 +1,4 @@
 # Learning ARM
 
-**Tutorials where I learned from:**
+*README coming soon.
 
