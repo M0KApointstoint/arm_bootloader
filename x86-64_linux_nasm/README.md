@@ -26,5 +26,5 @@
     -> return: rax;
     -> caller-saved: rdi, rsi, rdx, rcx, r8, r9, rax, r10, r11;
     -> callee-saved: rbx, rbp, rsp, r12 - r15;
-    -> rsp must be 16-byte alligned before executing a `call` instruction.
+    -> rsp must be 16-byte aligned before executing a `call` instruction.
 
