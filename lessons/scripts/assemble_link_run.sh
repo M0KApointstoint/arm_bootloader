@@ -18,11 +18,11 @@ sleep 0.5
 ./a.out
 sleep 0.5
 echo -e "\e[0;32mRun complete.\e[0m\n"
-sleep 3
+sleep 0.5
 echo -e "\e[0;31mRemoving temporary object file.\e[0m\n"
 sleep 0.5
 rm temp.o
 echo -e "\e[0;34mRemoval complete.\e[0m\n"
-sleep 1
+sleep 0.5
 echo -e "\e[0;32mScript finished: assembled, linked, and ran successfully!\e[0m\n"
 
