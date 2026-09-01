@@ -1,0 +1,20 @@
+Found it. reverse calls len, but it never saves lr.
+
+asm
+reverse:
+    push    {r4, r5}        @ lr not saved
+    ...
+    bl      len             @ this overwrites lr
+    ...
+    pop     {r4, r5}
+    bx      lr              @ branches to the middle of reverse
+
+bl len puts the return-into-reverse address into lr, destroying the address
+that pointed back into _start. When reverse finishes, bx lr jumps to just after
+the bl len instruction instead of returning to the caller. It runs the second
+half of reverse again, with garbage pointers this time, and eventually walks
+off into unmapped memory.
+
+This is exactly the thing I mentioned back on the first program:
+the moment a function calls another function, it needs lr on the stack.
+
