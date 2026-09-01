@@ -20,14 +20,24 @@
 
 - *Syscall ABI*: Linux ARM EABI (Embedded ABI)
     -> number: r7;
+
     -> args: r0-r5;
+
     -> return: r0;
+
     -> preserved: r1 - r12, sp, lr;
+
     -> modified: r0.
+
 
 - *Function calling ABI*: AAPCS32(hard-float variant)
     -> args: r0 - r3, then the stack;
+
     -> return: r0;
+
     -> caller-saved: r0 - r3, r12(ip -> intra-procedure scratch);
+
     -> callee-saved: r4 - r8, r9 (sb / tr -> platform register, avoid), r10, r11.
+
+    -> stack needs to be 8 - byte aligned.
 
