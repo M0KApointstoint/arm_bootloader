@@ -1,5 +1,7 @@
 # Bare-metal C for ARM architecture
 
+## Chapter 1
+
 **Tools:**
 
 ```bash
@@ -11,13 +13,11 @@ $ sudo apt install bison
 $ sudo apt install flex
 ```
 
-**Starting:**
+## Chapter 2
 
-```bash
-$ qemu-system-arm -M vexpress-a9 -m 32M -no-reboot -nographic -monitor telnet:127.0.0.1:1234,server,nowait
-```
+### First and simple version
 
-**Compiling:**
+**Assembling and linking:**
 
 ```bash
 $ arm-none-eabi-as startup.s -o startup.o
@@ -43,5 +43,25 @@ $ qemu-system-arm -M vexpress-a9 -m 32M -no-reboot -nographic -monitor telnet:12
 ```bash
 $ telnet localhost 1234
 $ (qemu) info registers
+$ (qemu) q
+```
+
+### Second and better version
+
+*First terminal*
+
+```bash
+$ arm-none-eabi-as better.s -o better.o
+$ arm-none-eabi-ld -T linkscript.ld better.o -o better-hang.elf
+$ arm-none-eabi-objcopy better-hang.elf -O binary better-hang.bin
+$ qemu-system-arm -M vexpress-a9 -m 32M -no-reboot -nographic -monitor telnet:127.0.0.1:1234,server,nowait -kernel better-hang.bin
+```
+
+*Second terminal*
+
+```bash
+$ telnet localhost 1234
+$ (qemu) info registers
+$ (qemu) q
 ```
 
