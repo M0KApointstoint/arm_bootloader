@@ -1,5 +1,7 @@
 # AArch32(ARM), Linux, GNU as
 
+## Right now working on `/bare-metal` !!! Check it out!
+
 *More details coming soon!*
 
 **Technical details:**
