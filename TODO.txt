@@ -1,5 +1,7 @@
 #TODOs:
 
+- Finish arm-baremetal-ebook.
 - 11_Lesson: Stack operations.
-- Embedded.
+- More README details.
+- Final project.
 
