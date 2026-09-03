@@ -7,10 +7,6 @@
 ```bash
 $ sudo apt install qemu-system-arm
 $ sudo apt install gcc-arm-none-eabi
-$ sudo apt install build-essential
-$ sudo apt install cmake
-$ sudo apt install bison
-$ sudo apt install flex
 ```
 
 ## Chapter 2
@@ -64,4 +60,7 @@ $ telnet localhost 1234
 $ (qemu) info registers
 $ (qemu) q
 ```
+## Chapter 3
+
+*Coming soon!*
 
