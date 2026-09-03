@@ -62,5 +62,11 @@ $ (qemu) q
 ```
 ## Chapter 3
 
+**Start U-Boot in QEMU:**
+
+```bash
+$ qemu-system-arm -M vexpress-a9 -m 32M -no-reboot -nographic -monitor telnet:127.0.0.1:1234,server,nowait -kernel u-boot-2026.07/u-boot
+```
+
 *Coming soon!*
 
