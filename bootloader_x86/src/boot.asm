@@ -3,10 +3,7 @@ bits 16
 
 _start:
 	xor ax, ax
-	mov ds, ax ; Setup data segments.
 	mov es, ax
-	mov ss, ax ; Setup stack segment and the stack.
-	mov sp, 0x7c00
 
 	mov ah, 0x13
 	mov al, 0x01
