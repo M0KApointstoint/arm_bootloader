@@ -10,6 +10,23 @@ SECTIONS
 	{
 		KEEP(*(.vector_table))
 		*(.text*)
+		*(.rodata*)
+		_etext = .;
 	} > FLASH
+
+	.data :
+	{
+		_sdata = .;
+		*(.data*)
+		_edata = .;
+	} > SRAM AT> FLASH
+
+	.bss :
+	{
+		_sbss = .;
+		*(.bss*)
+		*(COMMON)
+		_ebss = .;
+	} > SRAM
 }
 
