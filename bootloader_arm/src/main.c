@@ -6,6 +6,15 @@
 
 #define UART0_DR (*(volatile uint32_t *)0x4000c000u)
 
+extern uint32_t _etext;
+extern uint32_t _sdata;
+extern uint32_t _edata;
+extern uint32_t _sbss;
+extern uint32_t _ebss;
+
+uint32_t data_var = 0xdeadbeee;
+uint32_t bss_var;
+
 void reset_handler(void);
 
 __attribute__((section(".vector_table"))) uint32_t vector_table[] = {
@@ -48,9 +57,33 @@ void uart_print_hex(uint32_t x)
 void reset_handler(void)
 {
 	uart_puts("Booting...\n");
+	
+	uart_puts("Copying .data values from FLASH to SRAM...\n");
+	uint32_t *src = &_etext;
+	uint32_t *dest = &_sdata;
+	while (dest < &_edata) {
+		*dest = *src;
+		++dest;
+		++src;
+	}
+	uart_puts("Done!\n");
+
+	uart_puts("Zeroing .bss...\n");
+	dest = &_sbss;
+	while (dest < &_ebss) {
+		*dest = 0x00000000;
+		++dest;
+	}
+	uart_puts("Done!\n");
+
 	uart_puts("Welcome, Assembler! Here is a nice number for you: ");
-	uart_print_hex(0x1337beef);
+	++data_var;
+	uart_print_hex(data_var);
+	data_var++;
+	uart_puts("\nFinish code: ");
+	uart_print_hex(bss_var);
 	uart_puts("\nHello, World!\n");
+
 	while (1) {
 	}
 }
