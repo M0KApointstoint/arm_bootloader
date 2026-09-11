@@ -26,9 +26,31 @@ void uart_puts(const char *buf)
 	}
 }
 
+void uart_print_hex(uint32_t x)
+{
+	uart_puts("0x");
+	uint32_t mask = 0xf0000000;
+	uint32_t temp = 0;
+	for (uint8_t i = 0; i < 8; ++i) {
+		temp = x & mask;
+		temp >>= 28;
+		if (temp < 10) {
+			temp += '0';
+		} else {
+			temp -= 10;
+			temp += 'a';
+		}
+		uart_putc((char)temp);
+		x <<= 4;
+	}
+}
+
 void reset_handler(void)
 {
-	uart_puts("Hello, World!\n");
+	uart_puts("Booting...\n");
+	uart_puts("Welcome, Assembler! Here is a nice number for you: ");
+	uart_print_hex(0x1337beef);
+	uart_puts("\nHello, World!\n");
 	while (1) {
 	}
 }
