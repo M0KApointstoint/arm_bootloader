@@ -1,7 +1,10 @@
 # AArch32(ARM), Linux, GNU as
 
-## Right now working on `/bare-metal` !!! Check it out!
-### Also wrote my first bootloader, see it at `/bootloader_x86-64`!
+## Right now working on `/bootloader_arm` !!! Check it out!
+
+### Also wrote my first bootloader for `/bootloader_x86`!
+
+#### Everything else is in a construction process.
 
 *More details coming soon!*
 
