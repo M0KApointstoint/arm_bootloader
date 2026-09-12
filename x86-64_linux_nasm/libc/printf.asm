@@ -9,7 +9,7 @@ main:
 	mov rdi, string
 	mov esi, [age]
 	xor eax, eax    ; 0 xmm registers used.
-	call printf
+	call printf     ; Conceptually: push rip; jump printf
 
 	leave           ; Equivalent to: mov rsp, rbp; pop rbp
 	ret             ; Conceptually: pop rip
