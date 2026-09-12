@@ -1,8 +1,19 @@
 # Learning ARM
 ## AArch32, Linux, GNU as
 
-This is some documentation for the learning process that I had to go through
-while learning `ARM` assembly.
+**Some documentation for the learning process that I had to go through while
+learning `ARM` assembly!**
+
+This work leads nicely to these directories:
+
+- [`bootloader_arm`](../bootloader_arm) : `Firmware` written from scratch;
+
+- [`bare-metal`](../bare-metal) : Learning more about `embedded` development;
+
+- [`x86-64_linux_nasm`](../x86-64_linux_nasm) : Recalling `x86` knowledge and comparing it with fresh `ARM` skills
+
+- [`bootloader_x86`](../bootloader_x86) : What kind of [Asemblerist](https://translate.google.com/?sl=ro&tl=en&text=asemblerist&op=translate) am I?.
+Wrote a simple bootloader for `x86` as well!
 
 ## Technical details
 
@@ -22,12 +33,14 @@ while learning `ARM` assembly.
 
 - *Runtime*: x86-64 host + qemu-arm;
 
+- *Reference file for the `ARM` `ABI` conventions that I used while learning*: [`abi_docs.md`](./abi_docs.md)
+
 ## Credits
 
 I am so happy that creators such as
 [LaurieWired](https://www.youtube.com/@lauriewired) and
 [Low Level](https://www.youtube.com/@LowLevelTV) exist, because
-the first tutorials where I learned from can be found publicly
+the first tutorials that I learned from can be found publicly
 on their `Youtube` channels.
 *Thank you!*
 
@@ -81,7 +94,7 @@ here: [`ARM_practice`](./ARM_practice)
 
 ## Getting the setup ready for a machine that does not have native ARM:
 
-Everything I written runs on an `GNU/Linux` OS (`Ubuntu` distro) with `x86-64`
+Everything I wrote runs on a `GNU/Linux` OS (`Ubuntu` distro) with `x86-64`
 native CPU architecture. Here is how I set everything up:
 
 ```bash
@@ -91,12 +104,12 @@ sudo apt install binutils-arm-linux-gnueabihf qemu-user gdb-multiarch
 **I also learned about cross-compiliing and emulators while doing this,
 so you can do it too!**
 
-You can test that everything works like in two ways:
+You can test that everything works in two ways:
 
 ```bash
 $ arm-linux-gnueabihf-as 00_miscellaneous_programs/welcome_assembler.s -o welcome_assembler.o
 $ arm-linux-gnueabihf-ld welcome_assembler.o
-$ ./a.out
+$ qemu-arm ./a.out
 ```
 
 or using the bash script:
@@ -107,7 +120,7 @@ $ ./scripts/assemble_link_run.sh 00_miscellaneous_programs/welcome_assembler.s
 
 ## Other
 
-- [`./italy`](./italy) : Code that I wrote after an Italy break to refresh my knowledge;
+- [`italy`](./italy) : Code that I wrote after an Italy break to refresh my knowledge;
 
-- [`./scripts`](./scrits) : Bash scripts that I wrote to automate my work.
+- [`scripts`](./scripts) : Bash scripts that I wrote to automate my work.
 
