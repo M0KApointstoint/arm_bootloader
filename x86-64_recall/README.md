@@ -1,38 +1,63 @@
-# x86-64, Linux, NASM
+# Recalling x86-64
+## x86-64, Linux, NASM
 
-**Technical details:**
+*This is the first architecture I studied!*
+
+We have:
+
+- Two assembly languages (two diffrent architectures);
+
+- Different conventions;
+
+- Same OS.
+
+## Technical details:
 
 - *Architecture*: x86-64 (a. k. a. AMD64, x64);
 
 - *Encoding*: variable length, 1 - 15 bytes per instruction;
 
-- *Assembler*: NASM;
+- *Assembler*: NASM, not GAS; **This is really important!**
 
-- *Syntax*: Intel;
+- *Syntax*: Intel, not AT&T;   **This is really important as well!**
 
-- *Linker*: GNU ld;
+- *Linker*: GNU ld (or GCC);
 
 - *OS*: GNU/Linux (Distro: Ubuntu);
 
-- *Syscall ABI*: Linux x86-64
-    -> number: rax;
+- *Reference file for the x86-64 ABI conventions that I used + comparisons with AArch32*: [`abi_docs.md`](./abi_docs.md)
 
-    -> args: rdi, rsi, rdx, r10, r8, r9;
+## What is here
 
-    -> return: rax;
+- [`syscalls`](./syscalls) : NASM program that outputs message only using
+syscalls, with no libc. Same idea as the ARM lessons;
 
-    -> preserved: rdi, rsi, rdx, r10, r8, r9, rbx, rsp, rbp, r12 - r15;
+- [`libc`](./libc) : NASM program that outputs message using libc;
 
-    -> modified: rax(return value), rcx(old rip), r11(old rflags);
+## Getting the setup ready
 
-- *Function Calling ABI*: System V AMD64
-    -> args: rdi, rsi, rdx, rcx, r8, r9;
+Everything I wrote runs on a `GNU/Linux` OS (`Ubuntu` distro) with `x86-64`
+native CPU architecture. Here is how I set everything up:
 
-    -> return: rax;
+```bash
+sudo apt install nasm binutils gcc
+```
 
-    -> caller-saved: rdi, rsi, rdx, rcx, r8, r9, rax, r10, r11;
+**Building the programs:**
 
-    -> callee-saved: rbx, rbp, rsp, r12 - r15;
+If they are freestanding:
 
-    -> rsp must be 16-byte aligned before executing a `call` instruction.
+```bash
+$ nasm -f elf64 syscalls/hello_world.asm -o hello_world.o
+$ ld hello_world.o
+$ ./a.out
+```
+
+or if they use libc:
+
+```bash
+$ nasm -f elf64 libc/printf.asm -o printf.o
+$ gcc printf.o -no-pie
+$ ./a.out
+```
 
