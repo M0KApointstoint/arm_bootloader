@@ -14,8 +14,7 @@ These are some of the ABI conventions that I have used while learning
 
     -> clobbered (modified): `r0`.
 
-
-- *Function calling ABI*: AAPCS32(hard-float variant)
+- *Function calling ABI*: AAPCS32 (hard-float variant)
     -> args: `r0`-`r3`, then the stack;
 
     -> return: `r0`;
@@ -29,5 +28,5 @@ These are some of the ABI conventions that I have used while learning
 ## Comparison with x86-64
 
 Since I first learned about the `x86` architecture I took similar notes here:
-[`../../x86-64_linux_nasm/abi_docs.md`](../../x86-64_linux_nasm/abi_docs.md)
+[`x86-64_linux_nasm/abi_docs.md`](../../x86-64_linux_nasm/abi_docs.md)
 
