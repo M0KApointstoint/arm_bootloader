@@ -33,7 +33,7 @@ Wrote a simple bootloader for `x86` as well!
 
 - *Runtime*: x86-64 host + qemu-arm;
 
-- *Reference file for the `ARM` `ABI` conventions that I used while learning*: [`abi_docs.md`](./abi_docs.md)
+- *Reference file for the AArch32 ABI conventions that I used while learning*: [`abi_docs.md`](./abi_docs.md)
 
 ## Credits
 
