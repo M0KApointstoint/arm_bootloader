@@ -18,7 +18,6 @@ Right not I am working on the [`arm_bootloader`](./bootloader_arm).
 - Finish bare-metal directory;
 - Finish x86 bootloader directory;
 - 11_Lesson: Stack operations;
-- Finish ARM practice directory;
 - More README details;
 - Finish arm bootloader;
 - Final project.
