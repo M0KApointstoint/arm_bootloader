@@ -6,14 +6,14 @@
 
 #define UART0_DR (*(volatile uint32_t *)0x4000c000u)
 
+#define APP_BASE 0x00008000u
+#define SCB_VTOR (*(volatile uint32_t *)0xe000ed08u)
+
 extern uint32_t _sidata;
 extern uint32_t _sdata;
 extern uint32_t _edata;
 extern uint32_t _sbss;
 extern uint32_t _ebss;
-
-uint32_t data_var = 0xdeadbeee;
-uint32_t bss_var;
 
 void reset_handler(void);
 void nmi_handler(void);
@@ -57,58 +57,59 @@ void uart_puts(const char *buf)
 
 static void fault_trap(const char *name)
 {
-	uart_puts("\n!!! ");
+	uart_puts("\n");
 	uart_puts(name);
-	uart_puts(" !!!\n");
+	uart_puts("\n");
 	while (1) {
 	}
 }
 
 void nmi_handler(void)
 {
-	fault_trap("NMI");
+	fault_trap("NMI!!!");
 }
 
 void hardfault_handler(void)
 {
-	fault_trap("HardFault");
+	fault_trap("HardFault!!!");
 }
 
 void memmanage_handler(void)
 {
-	fault_trap("MemManage");
+	fault_trap("MemManage!!!");
 }
 
 void busfault_handler(void)
 {
-	fault_trap("BusFault");
+	fault_trap("BusFault!!!");
 }
 
 void usagefault_handler(void)
 {
-	fault_trap("UsageFault");
+	fault_trap("UsageFault!!!");
 }
 
 void svcall_handler(void)
 {
-	fault_trap("SVCall");
+	fault_trap("SVCall!!!");
 }
 
 void debugmon_handler(void)
 {
-	fault_trap("DebugMon");
+	fault_trap("DebugMon!!!");
 }
 
 void pendsv_handler(void)
 {
-	fault_trap("PendSV"); 
+	fault_trap("PendSV!!!");
 }
 
 void systick_handler(void)
 {
-	fault_trap("SysTick");
+	fault_trap("SysTick!!!");
 }
 
+// Don't really need this function, just practice.
 void uart_print_hex(uint32_t x)
 {
 	uart_puts("0x");
@@ -127,6 +128,26 @@ void uart_print_hex(uint32_t x)
 		x <<= 4;
 	}
 }
+
+typedef void (*app_entry_t)(void);
+
+void jump_to_application(void)
+{
+	uint32_t app_msp = *(volatile uint32_t *)APP_BASE;
+	if ((app_msp < 0x20000000u) || (app_msp > 0x20010000u)) {
+		return;
+	}
+	uint32_t app_reset_handler = *(volatile uint32_t *)(APP_BASE + 0x4u);
+	if ((app_reset_handler & 0xffffffffu) == 0xffffffffu) {
+		return;
+	}
+	SCB_VTOR = APP_BASE;
+	__asm__ volatile ("msr msp, %0" : : "r" (app_msp));
+	((app_entry_t)app_reset_handler)();
+}
+
+uint32_t data_var = 0xdeadbeee;
+uint32_t bss_var;
 
 void reset_handler(void)
 {
@@ -154,9 +175,9 @@ void reset_handler(void)
 	++data_var;
 	uart_print_hex(data_var);
 	data_var++;
-	uart_puts("\nFinish code: ");
+	uart_puts("\n.data and .bss test code: ");
 	uart_print_hex(bss_var);
-	uart_puts("\nHello, World!\n");
+	uart_puts("\nLoading application...\n");
 
 	// Testing hardfault_handler():
 	/*
@@ -165,6 +186,10 @@ void reset_handler(void)
 	bad();
 	uart_puts("You will never see this.\n");
 	*/
+
+	jump_to_application();
+
+	uart_puts("\nExited application.\n");
 
 	while (1) {
 	}
