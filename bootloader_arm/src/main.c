@@ -16,10 +16,13 @@ uint32_t data_var = 0xdeadbeee;
 uint32_t bss_var;
 
 void reset_handler(void);
+void hardfault_handler(void);
 
 __attribute__((section(".vector_table"))) uint32_t vector_table[] = {
 	STACK_TOP,
-	(uint32_t)reset_handler
+	(uint32_t)reset_handler,
+	0, //NMI: Don't care for now.
+	(uint32_t)hardfault_handler
 };
 
 void uart_putc(char c)
@@ -32,6 +35,13 @@ void uart_puts(const char *buf)
 	while (*buf) {
 		uart_putc(*buf);
 		++buf;
+	}
+}
+
+void hardfault_handler(void)
+{
+	uart_puts("\nHardFault!\n");
+	while (1) {
 	}
 }
 
@@ -83,6 +93,14 @@ void reset_handler(void)
 	uart_puts("\nFinish code: ");
 	uart_print_hex(bss_var);
 	uart_puts("\nHello, World!\n");
+
+	// Testing hardfault_handler():
+	/*
+	uart_puts("About to fault...\n");
+	void (*bad)(void) = (void (*)(void))0x00000100u;
+	bad();
+	uart_puts("You will never see this.\n");
+	*/
 
 	while (1) {
 	}
