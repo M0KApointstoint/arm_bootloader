@@ -16,7 +16,15 @@ uint32_t data_var = 0xdeadbeee;
 uint32_t bss_var;
 
 void reset_handler(void);
+void nmi_handler(void);
 void hardfault_handler(void);
+void memmanage_handler(void);
+void busfault_handler(void);
+void usagefault_handler(void);
+void svcall_handler(void);
+void debugmon_handler(void);
+void pendsv_handler(void);
+void systick_handler(void);
 
 __attribute__((section(".vector_table"))) uint32_t vector_table[] = {
 	STACK_TOP,
@@ -38,11 +46,58 @@ void uart_puts(const char *buf)
 	}
 }
 
-void hardfault_handler(void)
+static void fault_trap(const char *name)
 {
-	uart_puts("\nHardFault!\n");
+	uart_puts("\n!!! ");
+	uart_puts(name);
+	uart_puts(" !!!\n");
 	while (1) {
 	}
+}
+
+void nmi_handler(void)
+{
+	fault_trap("NMI");
+}
+
+void hardfault_handler(void)
+{
+	fault_trap("HardFault");
+}
+
+void memmanage_handler(void)
+{
+	fault_trap("MemManage");
+}
+
+void busfault_handler(void)
+{
+	fault_trap("BusFault");
+}
+
+void usagefault_handler(void)
+{
+	fault_trap("UsageFault");
+}
+
+void svcall_handler(void)
+{
+	fault_trap("SVCall");
+}
+
+void debugmon_handler(void)
+{
+	fault_trap("DebugMon");
+}
+
+void pendsv_handler(void)
+{
+	fault_trap("PendSV"); 
+}
+
+void systick_handler(void)
+{
+	fault_trap("SysTick");
 }
 
 void uart_print_hex(uint32_t x)
