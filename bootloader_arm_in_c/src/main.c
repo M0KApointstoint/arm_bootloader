@@ -6,7 +6,7 @@
 
 #define UART0_DR (*(volatile uint32_t *)0x4000c000u)
 
-extern uint32_t _etext;
+extern uint32_t _sidata;
 extern uint32_t _sdata;
 extern uint32_t _edata;
 extern uint32_t _sbss;
@@ -59,7 +59,7 @@ void reset_handler(void)
 	uart_puts("Booting...\n");
 	
 	uart_puts("Copying .data values from FLASH to SRAM...\n");
-	uint32_t *src = &_etext;
+	uint32_t *src = &_sidata;
 	uint32_t *dest = &_sdata;
 	while (dest < &_edata) {
 		*dest = *src;
