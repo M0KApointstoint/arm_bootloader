@@ -29,8 +29,17 @@ void systick_handler(void);
 __attribute__((section(".vector_table"))) uint32_t vector_table[] = {
 	STACK_TOP,
 	(uint32_t)reset_handler,
-	0, //NMI: Don't care for now.
-	(uint32_t)hardfault_handler
+	(uint32_t)nmi_handler,
+	(uint32_t)hardfault_handler,
+	(uint32_t)memmanage_handler,
+	(uint32_t)busfault_handler,
+	(uint32_t)usagefault_handler,
+	0, 0, 0, 0,
+	(uint32_t)svcall_handler,
+	(uint32_t)debugmon_handler,
+	0,
+	(uint32_t)pendsv_handler,
+	(uint32_t)systick_handler
 };
 
 void uart_putc(char c)
