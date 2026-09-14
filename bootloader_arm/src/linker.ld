@@ -11,22 +11,20 @@ SECTIONS
 		KEEP(*(.vector_table))
 		*(.text*)
 		*(.rodata*)
-		. = ALIGN(4);
-		_etext = .;
 	} > FLASH
 
 	.data :
 	{
-		. = ALIGN(4);
 		_sdata = .;
 		*(.data*)
 		. = ALIGN(4);
 		_edata = .;
 	} > SRAM AT> FLASH
 
+	_sidata = LOADADDR(.data);
+
 	.bss :
 	{
-		. = ALIGN(4);
 		_sbss = .;
 		*(.bss*)
 		*(COMMON)

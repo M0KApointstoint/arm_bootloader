@@ -12,6 +12,6 @@ $(BUILD_DIR)/bootloader.elf: $(BUILD_DIR)/main.o
 	$(CC) $(LDFLAGS) $(BUILD_DIR)/main.o -o $(BUILD_DIR)/bootloader.elf
 
 $(BUILD_DIR)/main.o: $(SRC)
-	mkdir $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(SRC) -o $(BUILD_DIR)/main.o
 
