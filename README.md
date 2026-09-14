@@ -1,5 +1,5 @@
 # ARM Bootloader
-## And even more EXTRA
+## And EXTRA
 
 - For now you can safely check the following:
 
