@@ -109,7 +109,6 @@ void systick_handler(void)
 	fault_trap("SysTick!!!");
 }
 
-// Don't really need this function, just practice.
 void uart_print_hex(uint32_t x)
 {
 	uart_puts("0x");
@@ -135,10 +134,14 @@ void jump_to_application(void)
 {
 	uint32_t app_msp = *(volatile uint32_t *)APP_BASE;
 	if ((app_msp < 0x20000000u) || (app_msp > 0x20010000u)) {
+		uart_puts("\nInvalid MSP: ");
+		uart_print_hex(app_msp);
+		uart_putc('\n');
 		return;
 	}
 	uint32_t app_reset_handler = *(volatile uint32_t *)(APP_BASE + 0x4u);
-	if ((app_reset_handler & 0xffffffffu) == 0xffffffffu) {
+	if (app_reset_handler== 0xffffffffu) {
+		uart_puts("\nNo app has been found.\n");
 		return;
 	}
 	SCB_VTOR = APP_BASE;
