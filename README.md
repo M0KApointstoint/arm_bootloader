@@ -15,10 +15,13 @@ Right not I am working on the [`arm_bootloader`](./bootloader_arm).
 
 # TODOs:
 
-- Finish bare-metal directory;
 - Finish x86 bootloader directory;
 - 11_Lesson: Stack operations;
 - More README details;
 - Finish arm bootloader;
 - Final project.
+
+
+### About bare-metal
+- Just mention the book and explain why I abandoned it.
 
