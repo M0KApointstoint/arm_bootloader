@@ -1,7 +1,11 @@
-# Bootloader
+# x86 Bootloader
 ## From scratch
 
-*In progress...*
+**This directory is not finished yet, since the main repository is about
+a bootloader for the ARM architecture. The motivation behind THIS bootloader
+was to learn about bootloaders in the first place, coming from the
+arm-baremetal-ebook. Therefore, this directory will become a comparison model
+between ARM bootloaders and x86 bootloaders (Embedded vs OS).**
 
 ```bash
 $ make
