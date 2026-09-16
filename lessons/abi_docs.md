@@ -28,5 +28,5 @@ These are some of the ABI conventions that I have used while learning
 ## Comparison with x86-64
 
 Since I first learned about the `x86` architecture I took similar notes here:
-[`x86-64_linux_nasm/abi_docs.md`](../../x86-64_linux_nasm/abi_docs.md)
+[`x86-64_linux_nasm/abi_docs.md`](../x86-64_linux_nasm/abi_docs.md)
 

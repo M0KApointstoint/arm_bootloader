@@ -8,8 +8,6 @@ This work leads nicely to these directories:
 
 - [`bootloader_arm`](../bootloader_arm) : `Firmware` written from scratch;
 
-- [`bare-metal`](../bare-metal) : Learning more about `embedded` development;
-
 - [`x86-64_linux_nasm`](../x86-64_linux_nasm) : Recalling `x86` knowledge and comparing it with fresh `ARM` skills
 
 - [`bootloader_x86`](../bootloader_x86) : What kind of [Asemblerist](https://translate.google.com/?sl=ro&tl=en&text=asemblerist&op=translate) am I?.

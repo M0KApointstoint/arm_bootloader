@@ -15,7 +15,6 @@ Right not I am working on the [`arm_bootloader`](./bootloader_arm).
 
 # TODOs:
 
-- 11_Lesson: Stack operations;
 - Finish arm bootloader;
 - Final project.
 

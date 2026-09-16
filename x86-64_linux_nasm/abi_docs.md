@@ -1,6 +1,6 @@
-# x86-64 ABI conventinos
+# x86-64 ABI conventions
 
-These are some of the ABI convetions that I have used while doing
+These are some of the ABI conventions that I have used while doing
 **x86-64 assembly**.
 
 - *Syscall ABI*: Linux x86-64 -> invoked with `syscall`
