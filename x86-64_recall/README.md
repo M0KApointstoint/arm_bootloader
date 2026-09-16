@@ -5,7 +5,7 @@
 
 We have:
 
-- Two assembly languages (two diffrent architectures);
+- Two assembly languages (two different architectures);
 
 - Different conventions;
 
