@@ -23,7 +23,7 @@ sum:
 	bx lr // Branch and exchange.
 
 // Similar C code:
-
+// Written documentaion for the conventions used.
 /*
 	int sum(int x, int y)
 	{
@@ -36,11 +36,4 @@ sum:
 		return 0;
 	}
 */
-
-// Convention used:
-// - First four arguments are stored in r0 - r3.
-// - Rest of the arguments are stored on the stack.
-// - Return value is stored in r0.
-
-// Should look more on calling conventions.
 
