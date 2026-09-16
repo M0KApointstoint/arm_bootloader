@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-In case you want to skip the storytelling part of [`WHY`](###-Motivation)
+In case you want to skip the storytelling part of [`WHY`](###motivation)
 I did this:
 
 - [`ARM_lessons`](./lessons) : The place where I built my `ARM Assembly`
@@ -14,7 +14,7 @@ architecture I studied, and comparing it to `ARM`;
 - [`bootloader_x86`](./bootloader_x86) : A tiny `BIOS` sector used to
 understand what a bootloader even is;
 
-- [`AI`](###-About-use-of-AI) : **NO vibe coding.**
+- [`AI`](###about-use-of-ai) : **NO vibe coding.**
 
 ### Main project
 
@@ -34,14 +34,15 @@ At the time of starting this repository, I did not know exactly that the
 final project will be an `ARM bootloader` for `embedded development`.
 All I had in mind was to:
 
-- Study a new CPU architecture **->** `ARM`;
+- Study a new CPU architecture → `ARM`;
 
-- Build a piece of firmware    **->** `bootloader` for `embedded development`.
+- Build a piece of firmware    → `bootloader` for `embedded development`.
 
 If you analyze the repo history then at some point you will find a period
 where I was following along this book:
 [baremetal-arm](https://github.com/umanovskis/baremetal-arm), written
 by [Daniels Umanovskis](https://github.com/umanovskis).
+
 The book is **great**, but starting from the third chapter, my vision
 of the project was diverging from the contents I was reading.
 
@@ -54,17 +55,20 @@ so to speak, but at some point the author used an already built `bootloader`.
 
 **All of the conversations I had with AI systems that I believe are significant
 for this repository are saved and can be analyzed.**
-Other conversations that with AI systems which I considered not as useful to
-keep track of, I did not save them here.
+Other conversations with AI systems which I considered not as useful to keep
+track of, I did not save them here.
 
-**The objective is to *actually* understand what I did here.**
+The objective is to *actually* understand what I did here.
 
 **There was no interest in vibe coding or pasting code that does not make sense
-to me inside this repository. I believe this can be deduced from the prompts
-as well.**
+to me inside this repository.**
+I believe this can be deduced from the prompts as well.
 
 I really feel like in this way, the skills acquired are more valuable and
 long-lasting. Going **fully in-depth** when learning something makes a **big**
 difference between people who actually *understand* something and people that
 only know [this](https://en.wikipedia.org/wiki/Popular_science).
+
+*Thank you for reading this!*
+`- M0KApointstoint`
 
