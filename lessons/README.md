@@ -79,9 +79,8 @@ For each lesson starting from `00` to `11` I have followed along these videos:
 - [`10_function_calls`](./10_function_calls):
 [ARM Assembly: Lesson 10 (Function Calls)](https://www.youtube.com/watch?v=pnnOL7kfkz0)
 
-- [`TODO`]():
+- [`11_stack_operations`](./11_stack_operations):
 [ARM Assembly: Lesson 11 (Stack Operations)](https://www.youtube.com/watch?v=56VrSY-F7_o)
-
 
 ## Practice
 
