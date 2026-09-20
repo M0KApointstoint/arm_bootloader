@@ -22,7 +22,7 @@ am I?. Wrote a simple boot sector for `x86` as well!
 
 - *Architecture*: AArch32 (32-bit ARM);
 
-- *Instruction set*: A32(the "ARM" instruction set), not Thumb/T32;
+- *Instruction set*: A32 (the "ARM" instruction set), not Thumb/T32;
 
 - *Encoding*: fixed length, 4 bytes per instruction;
 
