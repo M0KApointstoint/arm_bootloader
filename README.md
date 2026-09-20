@@ -1,25 +1,36 @@
 # ARM Bootloader
 
-## Table of contents
+This repository documents how I went from my first `ARM Assembly` instruction
+to a `bare-metal bootloader` for an `ARM Cortex-M3`, running in `QEMU`,
+emulating the `Texas Instruments Stellaris LM3S6965` microcontroller.
+Everything is written by hand and kept in the order I learned it,
+mistakes included, emphasizing *core understanding*.
 
-In case you want to skip the storytelling part of [`WHY`](###motivation)
+## Table of Contents
+
+In case you want to skip the storytelling part of [`WHY`](#motivation)
 I did this:
 
-- [`ARM_lessons`](./lessons) : The place where I built my `ARM Assembly`
+- [`arm_lessons`](./arm_lessons) : The place where I built my `ARM Assembly`
 foundation;
 
-- [`x86-64_recall`](./x86-64_linux_nasm) : Recalling `x86-64`, the first
+- [`x86-64_recall`](./x86-64_recall) : Recalling `x86-64`, the first
 architecture I studied, and comparing it to `ARM`;
 
-- [`bootloader_x86`](./bootloader_x86) : A tiny `BIOS` sector used to
+- [`boot_sector_x86`](./boot_sector_x86) : A tiny `BIOS` sector used to
 understand what a bootloader even is;
 
-- [`AI`](###about-use-of-ai) : **NO vibe coding.**
+- [`AI`](#about-use-of-ai) : **NO vibe coding.**
 
-### Main project
+- [`bootloader_arm_in_c`](./bootloader_arm_in_c) : A simple `Cortex-M3`
+bootloader that initializes memory and jumps to an application, written
+in `C`.
 
-- [`bootloader_arm`](./bootloader_arm) : A simple Cortex-M3 bootloader that
-initializes memory and jumps to an application.
+# Final Project
+
+- [`bootloader_arm_assembly`](./bootloader_arm_assembly) : A better `Cortex-M3`
+bootloader that initializes memory and jumpts to an application, written in
+`ARM Assembly`.
 
 ### Motivation
 
@@ -70,5 +81,6 @@ difference between people who actually *understand* something and people that
 only know [this](https://en.wikipedia.org/wiki/Popular_science).
 
 *Thank you for reading this!*
+
 `- M0KApointstoint`
 
