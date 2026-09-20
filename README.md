@@ -1,5 +1,9 @@
 # ARM Bootloader
 
+*Main picture of what I learned in this journey is that writing
+`bare-metal assembly` with no `OS` makes me a `compiler` and an
+`operating system` at the same time.*
+
 This repository documents how I went from my first `ARM Assembly` instruction
 to a `bare-metal bootloader` for an `ARM Cortex-M3`, running in `QEMU`,
 emulating the `Texas Instruments Stellaris LM3S6965` microcontroller.
@@ -8,11 +12,13 @@ mistakes included, emphasizing *core understanding*.
 
 ## Table of Contents
 
-In case you want to skip the storytelling part of [`WHY`](#motivation)
-I did this:
+In case you want to skip the storytelling part of why I did this and the
+[`motivation`](#motivation) is not that important, here are the main areas of
+interest:
 
 - [`arm_lessons`](./arm_lessons) : The place where I built my `ARM Assembly`
-foundation;
+foundation. This could be of interest:
+[`WHY`](#why-learn-arm-assembly-if-c-is-enough);
 
 - [`x86-64_recall`](./x86-64_recall) : Recalling `x86-64`, the first
 architecture I studied, and comparing it to `ARM`;
@@ -54,13 +60,33 @@ where I was following along this book:
 [baremetal-arm](https://github.com/umanovskis/baremetal-arm), written
 by [Daniels Umanovskis](https://github.com/umanovskis).
 
-The book is **great**, but starting from the third chapter, my vision
-of the project was diverging from the contents I was reading.
+The book is **great**, but starting from the third chapter, what I was reading
+was diverging from my vision of this project.
 
 I wanted to write everything mainly from scratch, having freestanding programs
 so to speak, but at some point the author used an already built `bootloader`.
 
 **THIS WAS THE MOMENT WHEN I DECIDED THAT I SHOULD BUILD A BOOTLOADER MYSELF!**
+
+### Why learn ARM Assembly if C is enough
+
+Since the bootloader is not that complex, `C` is already a good choice to stop
+at, but I want to know each instruction the CPU will execute, it gives me a
+feeling that I have more power on the machine;
+
+Another thing that I can do is to use 'objdump' on the final binary, and that
+still requires `assembly` knowledge;
+
+When using `C`, the compiler is an additional piece of very complicated
+software that I need to rely on. Even with specific flags that do not optimize
+the code, I want to know what the CPU is doing;
+
+That's my vision of low-level engineering, building things from scratch if they
+are very complicated or not using at all meaning that I have to think like
+them: Compiler + OS;
+
+At the end of the day, every newly acquired skill can be useful and
+`ARM Assembly` does not diappoint in engineering.
 
 ### About use of AI
 
