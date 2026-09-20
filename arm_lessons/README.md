@@ -1,21 +1,26 @@
 # Learning ARM
 ## AArch32, Linux, GNU as
 
-**Some documentation for the learning process that I had to go through while
-learning `ARM` assembly!**
+Some documentation of the learning process that I had to go through while
+learning `ARM Assembly`.
 
 This work leads nicely to these directories:
 
-- [`bootloader_arm`](../bootloader_arm) : `Firmware` written from scratch;
+- [`x86-64_recall`](../x86-64_recall) : Recalling `x86` knowledge and comparing
+it with fresh `ARM` skills;
 
-- [`x86-64_linux_nasm`](../x86-64_linux_nasm) : Recalling `x86` knowledge and comparing it with fresh `ARM` skills
+- [`bootloader_arm_assembly`](../bootloader_arm_assembly) : The main project of
+this repository;
 
-- [`bootloader_x86`](../bootloader_x86) : What kind of [Asemblerist](https://translate.google.com/?sl=ro&tl=en&text=asemblerist&op=translate) am I?.
-Wrote a simple bootloader for `x86` as well!
+- [`boot_sector_x86`](../boot_sector_x86) : What kind of
+[Asemblerist](https://translate.google.com/?sl=ro&tl=en&text=asemblerist&op=translate)
+am I?. Wrote a simple boot sector for `x86` as well!
+
+- [`bootloader_arm_in_c`](../bootloader_arm_in_c) : Main project, but in `C`.
 
 ## Technical details
 
-- *Architecture*: AArch32(32-bit ARM);
+- *Architecture*: AArch32 (32-bit ARM);
 
 - *Instruction set*: A32(the "ARM" instruction set), not Thumb/T32;
 
@@ -23,11 +28,11 @@ Wrote a simple bootloader for `x86` as well!
 
 - *Assembler*: GNU as;
 
-- *Syntax*: ARM / GAS;
+- *Syntax*: ARM/GAS;
 
 - *Linker*: GNU ld;
 
-- *OS*: GNU/Linux(Distro: Ubuntu);
+- *OS*: GNU/Linux (Distro: Ubuntu);
 
 - *Runtime*: x86-64 host + qemu-arm;
 
@@ -98,8 +103,7 @@ native CPU architecture. Here is how I set everything up:
 sudo apt install binutils-arm-linux-gnueabihf qemu-user gdb-multiarch
 ```
 
-**I also learned about cross-compiliing and emulators while doing this,
-so you can do it too!**
+**I also learned about cross-compiliing and emulators while doing this.**
 
 You can test that everything works in two ways:
 

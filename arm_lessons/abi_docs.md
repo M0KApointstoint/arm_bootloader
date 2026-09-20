@@ -1,7 +1,7 @@
 # AArch32 ABI conventions
 
 These are some of the ABI conventions that I have used while learning
-**ARM assembly**.
+`ARM Assembly`.
 
 - *Syscall ABI*: Linux ARM EABI (Embedded ABI) -> invoked with `swi 0`
     -> number: `r7`;
@@ -28,5 +28,5 @@ These are some of the ABI conventions that I have used while learning
 ## Comparison with x86-64
 
 Since I first learned about the `x86` architecture I took similar notes here:
-[`x86-64_linux_nasm/abi_docs.md`](../x86-64_linux_nasm/abi_docs.md)
+[`x86-64_recall/abi_docs.md`](../x86-64_recall/abi_docs.md).
 
