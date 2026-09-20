@@ -1,9 +1,10 @@
 # x86-64 ABI conventions
 
 These are some of the ABI conventions that I have used while doing
-**x86-64 assembly**.
+`x86-64 Assembly`.
 
-- *Syscall ABI*: Linux x86-64 -> invoked with `syscall`
+- *Syscall ABI*: Linux x86-64 -> invoked with `syscall`;
+
     -> number: `rax`;
 
     -> args: `rdi`, `rsi`, `rdx`, `r10`, `r8`, `r9`;
@@ -14,7 +15,8 @@ These are some of the ABI conventions that I have used while doing
 
     -> clobbered (modified): `rax` (return value), `rcx` (old `rip`), `r11` (old `rflags`);
 
-- *Function Calling ABI*: System V AMD64
+- *Function Calling ABI*: System V AMD64;
+
     -> args: `rdi`, `rsi`, `rdx`, `rcx`, `r8`, `r9`;
 
     -> return: `rax`;
@@ -23,12 +25,12 @@ These are some of the ABI conventions that I have used while doing
 
     -> callee-saved: `rbx`, `rbp`, `rsp`, `r12`-`r15`;
 
-    -> `rsp` must be 16-byte aligned before executing a `call` instruction.
+    -> stack must be 16-byte aligned before executing a `call` instruction.
 
 ## Comparison with AArch32
 
 Since `x86-64` is the first architecture I learned about, it is nice to see what
-`ARM` brings to the table: [`lessons/abi_docs.md`](../lessons/abi_docs.md).
+`ARM` brings to the table: [`arm_lessons/abi_docs.md`](../arm_lessons/abi_docs.md).
 
 **Big difference that needs to be taken care of:**
 
@@ -40,5 +42,5 @@ so nesting calls costs nothing extra.
 - On `ARM`, `bl` writes the return address into `lr`, a single register, so
 nesting calls will result in the first return address to be gone unless
 saved somewhere. Remembered this thanks to this practice problem:
-[`practice`](../lessons/ARM_practice/3_program/)
+[`practice`](../arm_lessons/ARM_practice/3_program/)
 

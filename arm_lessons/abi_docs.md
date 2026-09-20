@@ -3,7 +3,8 @@
 These are some of the ABI conventions that I have used while learning
 `ARM Assembly`.
 
-- *Syscall ABI*: Linux ARM EABI (Embedded ABI) -> invoked with `swi 0`
+- *Syscall ABI*: Linux ARM EABI (Embedded ABI) -> invoked with `swi 0`;
+
     -> number: `r7`;
 
     -> args: `r0`-`r5`;
@@ -14,7 +15,8 @@ These are some of the ABI conventions that I have used while learning
 
     -> clobbered (modified): `r0`.
 
-- *Function calling ABI*: AAPCS32 (hard-float variant)
+- *Function calling ABI*: AAPCS32 (hard-float variant);
+
     -> args: `r0`-`r3`, then the stack;
 
     -> return: `r0`;
